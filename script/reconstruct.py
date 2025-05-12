@@ -15,8 +15,8 @@ class DensityPredictor:
         self.device = device
         self.g_dim = 256
         self.point_dim = 3
-        self.density_z_dim = 64
-        self.chunk_size = 10000  # Increased chunk size for faster processing
+        self.density_z_dim = 32
+        self.chunk_size = 70000  # Increased chunk size for faster processing
         self.default_shape = (272, 632, 632)  # ~108.5M points per file
 
         # Load density checkpoint
@@ -144,8 +144,8 @@ def create_density_map(density_checkpoint_path, binary_map_dir, output_dir):
         torch.cuda.empty_cache()
 
 def main():
-    density_checkpoint_path = "/home/zcy/seperate_VAE/script/checkpoint/density/model_best.pth"
-    binary_map_dir = "/home/zcy/seperate_VAE/compressed_binary_maps"  # Directory with .gz files
+    density_checkpoint_path = "/home/zcy/INR_Network/script/checkpoint/65files_20PE_0.05/model_best.pth"
+    binary_map_dir = "/home/zcy/INR_Network/compressed_binary_maps"  # Directory with .gz files
     output_dir = "output"
 
     os.makedirs(output_dir, exist_ok=True)

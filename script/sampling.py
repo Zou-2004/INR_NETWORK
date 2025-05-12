@@ -136,7 +136,7 @@ if __name__ == "__main__":
     #     shutil.rmtree(compressed_dir)
     os.makedirs(compressed_dir,exist_ok=True)
     
-    threshold = 0.04
+    threshold = 0.05
     use_gpu = torch.cuda.is_available()
 
     print(f"Using GPU: {use_gpu}")

@@ -9,7 +9,7 @@ import numpy as np
 import h5py
 from INR_network import *
 
-class IM_AE(object):
+class INR(object):
     def __init__(self, config):
         # DDP setup
         torch.cuda.set_device(int(os.environ["LOCAL_RANK"]))
@@ -22,7 +22,7 @@ class IM_AE(object):
         self.point_dim = 3
         self.gf_dim = 256
         self.chunk_size = 70000
-        self.z_dim =64
+        self.z_dim = 32
         self.dataset_name = config.dataset
         self.checkpoint_dir = config.checkpoint_dir
         self.data_dir = config.data_dir
@@ -87,7 +87,7 @@ class IM_AE(object):
 
         # Setup optimizer with separate parameter groups
         world_size = dist.get_world_size()
-        self.scaled_lr = config.learning_rate * world_size
+        self.scaled_lr = config.learning_rate
         
         # Create parameter list for z vectors (much smaller learning rate)
         z_params = []

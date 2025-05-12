@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import math
 
-num_frequencies = 25  # consider increase, Number of frequency bands for positional encoding
+num_frequencies = 20  # consider increase, Number of frequency bands for positional encoding
 
 def positional_encoding(points, num_frequencies, include_input=True, log_sampling=True):
     """
